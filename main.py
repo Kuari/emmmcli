@@ -35,7 +35,7 @@ def vue():
                   cp ~/GitHub/emmmLibrary/vue/App.vue ./src && \
                   cp ~/GitHub/emmmLibrary/vue/main.js ./src')
         # 初始化库
-        os.system('yarn add vue-router vuex element-ui -D')
+        os.system('yarn add vue-router vuex element-ui axios -D')
         click.echo('\033[1;34mDone\033[0m')
     except Exception as e:
         click.echo('\n\033[1;31m[Error]\033[0m')
