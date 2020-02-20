@@ -4,36 +4,36 @@
 import os
 
 
-def replaceDirName(rootDir, oldStr, newStr):
-    for dirpath, dirNames, fileNames in os.walk(rootDir, topdown = False):
-        for dirName in dirNames:
-            if oldStr == dirName:
-                dirNameOld = os.path.join(dirpath, dirName)
-                dirNameNew = os.path.join(dirpath, dirName.replace(oldStr, newStr))
-                os.system('mv ' + dirNameOld + ' ' + dirNameNew)
+def replace_dir_name(root_dir, old_str, new_str):
+    for dir_path, dir_names, file_names in os.walk(root_dir, topdown = False):
+        for dir_name in dir_names:
+            if old_str == dir_name:
+                dir_name_old = os.path.join(dir_path, dir_name)
+                dir_name_new = os.path.join(dir_path, dir_name.replace(old_str, new_str))
+                os.system('mv ' + dir_name_old + ' ' + dir_name_new)
 
 
-def replaceFileName(rootDir, oldStr, newStr):
-    for dirpath, dirNames, fileNames in os.walk(rootDir):
-        for fileName in fileNames:
-            if oldStr in fileName:
-                fileNameOld = os.path.join(dirpath, fileName)
-                fileNameNew = os.path.join(dirpath, fileName.replace(oldStr, newStr))
-                os.system('mv ' + dirNameOld + ' ' + dirNameNew)
+def replace_file_name(root_dir, old_str, new_str):
+    for dir_path, dir_names, file_names in os.walk(root_dir):
+        for file_name in file_names:
+            if old_str in file_name:
+                file_name_old = os.path.join(dir_path, file_name)
+                file_name_new = os.path.join(dir_path, file_name.replace(old_str, new_str))
+                os.system('mv ' + file_name_old + ' ' + file_name_new)
 
 
-def replaceFileContent(rootDir, oldStr, newStr):
-    for dirpath,dirNames,fileNames in os.walk(rootDir):
-        for fileName in fileNames:
-            fileObj = os.path.join(dirpath, fileName)
-            f = open(fileObj, 'r+')
-            all_the_lines=f.readlines()
+def replace_file_content(root_dir, old_str, new_str):
+    for dir_path, dir_names, file_names in os.walk(root_dir):
+        for file_name in file_names:
+            file_obj = os.path.join(dir_path, file_name)
+            f = open(file_obj, 'r+')
+            all_the_lines = f.readlines()
             f.seek(0)
             f.truncate()
             for line in all_the_lines:
-                f.write(line.replace(oldStr, newStr))
+                f.write(line.replace(old_str, new_str))
 
 
 if __name__ == '__main__':
-    replaceFileContent('./server', 'server', 'heihei')
-    replaceDirName('./server/', 'server', 'heihei')
+    # replace_file_content('./server', 'server', 'test_project')
+    replace_dir_name('./server/', 'server', 'test_project')
